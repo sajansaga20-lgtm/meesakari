@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Meesakari ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Romantic Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      overflow-x: hidden;
+    }
+
+    /* Falling hearts background */
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 18px;
+      color: rgba(255, 77, 109, 0.35);
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .polaroids {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .polaroid {
+      background: #fff;
+      padding: 10px 10px 25px;
+      width: 180px;
+      border-radius: 6px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transform: rotate(-2deg);
+      transition: 0.3s ease;
+    }
+
+    .polaroid:nth-child(even) {
+      transform: rotate(3deg);
+    }
+
+    .polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+    }
+
+    .polaroid img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .polaroid p {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    .message {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.8;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Song (Autoplay) -->
+  <audio id="bgSong" autoplay loop muted>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <div class="title">Happy Birthday Meesakari 🫶🎀</div>
+    <p class="subtitle">A little page made with lots of heart</p>
+
+    <div class="polaroids">
+      <div class="polaroid">
+        <img src="img1.jpg">
+        <p>Always smiling ✨</p>
+      </div>
+      <div class="polaroid">
+        <img src="img2.jpg">
+        <p>Pure vibes 💫</p>
+      </div>
+      <div class="polaroid">
+        <img src="img3.jpg">
+        <p>Unforgettable 🌸</p>
+      </div>
+      <div class="polaroid">
+        <img src="img4.jpg">
+        <p>Just Indhu 💖</p>
+      </div>
+    </div>
+
+    <div class="message">
+      On this special day,<br>
+      I just want you to know…<br><br>
+      Your smile makes everything brighter 🤍
+    </div>
+  </div>
+
+  <script>
+    const song = document.getElementById("bgSong");
+
+    // Try autoplay on load
+    window.addEventListener("load", () => {
+      song.muted = false;
+      song.play().catch(() => {});
+    });
+
+    // Autoplay after first interaction (mobile fix)
+    document.addEventListener("click", () => {
+      song.muted = false;
+      song.play();
+    }, { once: true });
+
+    // Falling hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 11000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
